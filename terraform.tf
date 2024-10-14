@@ -8,11 +8,16 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 5.37"
+      version = "~> 5.71"
     }
   }
 
-  # next configure backend
+  backend "s3" {
+    region         = "ap-northeast-1"
+    bucket         = "prepare-bucketterraformstates-cxxp0e0isfpp"
+    key            = "cloud/state.json"
+    dynamodb_table = "prepare-TableTerraformLocks-5OEJP1YJFV3Z"
+  }
 }
 
 # ================================================================
